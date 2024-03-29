@@ -12,9 +12,9 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected function price(): Attribute {
+    protected function price() {
         return Attribute::make(
-            get: function(int $value) {
+            function(int $value) {
                 return new Money($value, new Currency('USD'));
             }
         );

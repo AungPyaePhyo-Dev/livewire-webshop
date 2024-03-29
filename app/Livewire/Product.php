@@ -25,7 +25,7 @@ class Product extends Component
     public function addToCart(AddProductVariantToCart $cart) {
         $this->validate();
         $cart->add(
-            variantId : $this->variant 
+             $this->variant
         );
 
         $this->banner('Your product has been added to your cart');
