@@ -10,7 +10,7 @@
             @foreach($this->items as $item)
                 <tr>
                     <td> 
-                        {{ $item->product->name }} Size: {{ $item->variant->size }} Color: {{ $item->variant->color }}
+                        {{ $item->product->name }} Size : {{ $item->variant->size }} Color : {{ $item->variant->color }}
                     </td>
                     <td>
                         {{ $item->quantity }}
