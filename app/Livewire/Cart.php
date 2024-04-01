@@ -7,24 +7,28 @@ use Livewire\Component;
 
 class Cart extends Component
 {
-    public function getItemsProperty() {
+    public function getItemsProperty()
+    {
         return CartFactory::make()->items;
     }
 
-    public function increment($itemId) {
-        CartFactory::make()->items()->find($itemId)?->increment('quantity');
+    public function increment($itemId)
+    {
+        CartFactory::make()->items()->find($itemId) ?->increment('quantity');
         $this->dispatch('productAddedToCart');
     }
 
-    public function decrement($itemId) {
+    public function decrement($itemId)
+    {
         $item = CartFactory::make()->items()->find($itemId);
-        if($item->quantity > 1) {
+        if ($item->quantity > 1) {
             $item->decrement('quantity');
         }
         $this->dispatch('productRemoveFromCart');
     }
 
-    public function delete($itemId) {
+    public function delete($itemId)
+    {
         CartFactory::make()->items()->where('id', $itemId)->delete();
         $this->dispatch('productRemoveFromCart');
     }

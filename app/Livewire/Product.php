@@ -18,21 +18,24 @@ class Product extends Component
         'variant' => ['required', 'exists:App\Models\ProductVariant,id']
     ];
 
-    public function mount() {
+    public function mount()
+    {
         $this->variant = $this->productDetail->variants()->value('id');
     }
 
-    public function addToCart(AddProductVariantToCart $cart) {
+    public function addToCart(AddProductVariantToCart $cart)
+    {
         $this->validate();
         $cart->add(
-             $this->variant
+            $this->variant
         );
 
         $this->banner('Your product has been added to your cart');
         $this->dispatch('productAddedToCart');
     }
 
-    public function getProductDetailProperty() {
+    public function getProductDetailProperty()
+    {
         return \App\Models\Product::findOrFail($this->product);
     }
 
@@ -41,6 +44,4 @@ class Product extends Component
     {
         return view('livewire.product');
     }
-
-
 }
