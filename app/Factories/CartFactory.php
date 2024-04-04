@@ -8,7 +8,7 @@ class CartFactory {
     {
         return match(auth()->guest()) {
             true => Cart::firstOrCreate(['session_id' => session()->getId()]),
-            false => auth()->user()->cart ?: auth()->user()->cart()->create()
+            false => Cart::firstOrCreate(['user_id' => auth()->user()->id])
         };
     }
 }

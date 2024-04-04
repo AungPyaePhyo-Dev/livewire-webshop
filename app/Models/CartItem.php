@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
@@ -9,6 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class CartItem extends Model
 {
     use HasFactory;
+
+    public function getSubtotalAttribute() {
+        return $this->product->price * $this->quantity;
+    }
 
     public function product(): HasOneThrough
     {
